@@ -16,7 +16,9 @@ class memory
         void clearMemoryPos(unsigned int pos);
         mixed getMemory(unsigned int pos);
         void setMemory(unsigned int pos, mixed data);
-
+        bool saveMemory(string fileName);
+        bool readMemory(string fileName);
+        int getSize();
         friend
         ostream& operator<<(ostream& out, const memory &m);
 

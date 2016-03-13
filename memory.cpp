@@ -71,6 +71,16 @@ void memory::setMemory(unsigned int pos, mixed data)
     mem[pos] = data;
 }
 
+bool memory::saveMemory(string fileName)
+{
+
+}
+
+bool memory::readMemory(string fileName)
+{
+
+}
+
 void memory::clearPrivate()
 {
     for(unsigned int i=0; i<size-1;i++)
@@ -81,8 +91,13 @@ void memory::clearPrivate()
 
 void memory::checkRange(unsigned int pos)
 {
-    if(pos >size -1)
+    if(pos > size -1)
         throw INDEXOUTOFRANGE;
+}
+
+int memory::getSize()
+{
+    return size;
 }
 
 void memory::copy(const memory &other)

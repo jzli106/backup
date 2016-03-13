@@ -6,7 +6,8 @@ CONFIG -= qt
 SOURCES += main.cpp \
     fraction.cpp \
     mixed.cpp \
-    memory.cpp
+    memory.cpp \
+    calculator.cpp
 
 
 HEADERS += \
@@ -16,5 +17,7 @@ HEADERS += \
     Parser.h \
     Queue.h \
     Stack.h \
-    memory.h
+    memory.h \
+    calculator.h \
+    usefulfunctions.h
 

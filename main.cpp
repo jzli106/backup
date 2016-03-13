@@ -6,8 +6,9 @@
 #include "Queue.h"
 #include "Parser.h"
 #include "memory.h"
+#include "calculator.h"
 
-enum letters {A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z};
+//enum letters {A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z};
 
 using namespace std;
 void test_constructor();
@@ -23,6 +24,8 @@ void clearMemory(mixed memory[],int s);
 void clearMemoryPos(mixed memory[],int size, int pos);
 mixed getMemory(mixed memory[], int size, int pos);
 void setMemory(mixed memory[], int size, int pos, mixed data);
+void test4();
+
 /// when all three parameters are negative for mixed number
 /// constructor there's a strange resu
 
@@ -32,82 +35,14 @@ struct twin
     void* p;
 };
 
+
+
 int main()
 {
-    fraction ttt(1,2);
-    void* vp;
-    vp = &ttt;
 
-    twin ttpair;
-    ttpair.s = typeid(ttt).name();
-    ttpair.p = vp;
-
-    Stack<mixed> *stk = new Stack<mixed>(100);
-    Stack<twin> st(100);
-
-    st.push(ttpair);
-
-    twin tempt = ttpair;
-    twin temps =  st.pop();
-    string str3 = temps.s;
-    if(str3=="8fraction")
-    {
-        cout<<" asdfa go itadsf"<<endl;
-        fraction tempmixed = (fraction*) temps.p;
-    }
-
-    cout<<"typestr3: "<<str3<<endl;
-
-
-
-    stk->push(mixed(1,2,3));
-    stk->push(fraction(1,2));
-    cout<<"peek "<<stk->peek();
-    cout<<"pop "<<stk->pop();
-    cout<<"pop "<<stk->pop();
-    //std::array<std::pair<std::string, int>, 3> test{{"a", 1}, {"b", 2}, {"c", 3}};
-
-
-
-    memory m(30),kk ;
-    fraction dd(1,2);
-    cout<<m<<endl;
-    m.setMemory(A,dd);
-    m.setMemory(Z,dd);
-    cout<<m<<endl;
-
-    //string for the memory slot
-    string memoryVar;
-    string str;
-
-    //mixed fraction array
-    mixed memory[30];
-    fraction half(1,2);
-
-    cout<<"type: "<<(typeid(half).name())<<endl;
-
-    for(int i=0; i<30;i++)
-    {
-        memory[i] = mixed(i+.2);
-    }
-
-    for(int i = 0; i < 30; i++)
-    {
-        cout<<memory[i]<<" ";
-    }
-
-    clearMemoryPos(memory,30, A);
-
-//    clearMemory(memory, 30);
-    for(int i = 0; i < 30; i++)
-    {
-        cout<<memory[i];
-    }
-
-
-    // ask the user for input
-    // will convert everything to upper case
-
+    calculator cal;
+    while(1)
+    cal.commands();
 //    str= getUserInput();
 
 //    //find the index of =
@@ -536,7 +471,6 @@ void voidPointerTest()
     double n(2.2);
 
     void* vFra = &d, *vStr=&s, *vDou=&n;
-    void* vTemp;
 
     Queue<int> t2;
     t2.enqueue(3);
@@ -620,4 +554,42 @@ void setMemory(mixed memory[], int size, int pos, mixed data)
     if(pos>size-1||size<0)
         exit(1); // should throw some kind of error
     memory[pos] = data;
+}
+void test4()
+{
+    fraction ttt(1,2);
+    fraction tempmixed;
+    void* vp;
+    vp = &ttt;
+
+    twin ttpair;
+    ttpair.s = typeid(ttt).name();
+    ttpair.p = vp;
+
+    Stack<mixed> *stk = new Stack<mixed>(100);
+    Stack<twin> st(100);
+
+    st.push(ttpair);
+
+    twin tempt = ttpair;
+    twin temps =  st.pop();
+    string str3 = temps.s;
+
+    if(str3=="8fraction")
+    {
+        cout<<" asdfa go itadsf"<<endl;
+         tempmixed = *(fraction*) temps.p;
+    }
+
+    cout<<"tempmixed: "<<tempmixed<<endl;
+    cout<<"typestr3: "<<str3<<endl;
+
+    stk->push(mixed(1,2,3));
+    stk->push(fraction(1,2));
+    cout<<"peek "<<stk->peek();
+    cout<<"pop "<<stk->pop();
+    cout<<"pop "<<stk->pop();
+    //std::array<std::pair<std::string, int>, 3> test{{"a", 1}, {"b", 2}, {"c", 3}};
+
+
 }
